@@ -1,5 +1,13 @@
+warning: unused import: `std::time`
+ --> src/json_schema_impls/time.rs
+  |
+  | use std::time;
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
 error: This argument to `schema_for!` is not a type - did you mean to use `schema_for_value!` instead?
- --> $DIR/schema_for_arg_value.rs:4:19
+ --> tests/ui/schema_for_arg_value.rs:4:19
   |
 4 |     let _schema = schema_for!(123);
   |                   ^^^^^^^^^^^^^^^^

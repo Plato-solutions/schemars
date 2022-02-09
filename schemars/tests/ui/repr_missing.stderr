@@ -1,5 +1,13 @@
+warning: unused import: `std::time`
+ --> src/json_schema_impls/time.rs
+  |
+  | use std::time;
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
 error: JsonSchema_repr: missing #[repr(...)] attribute
- --> $DIR/repr_missing.rs:3:10
+ --> tests/ui/repr_missing.rs:3:10
   |
 3 | #[derive(JsonSchema_repr)]
   |          ^^^^^^^^^^^^^^^
