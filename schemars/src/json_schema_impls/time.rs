@@ -1,7 +1,9 @@
+use std::time;
 use crate::gen::SchemaGenerator;
 use crate::schema::*;
 use crate::JsonSchema;
 use std::time::{Duration, SystemTime};
+
 
 impl JsonSchema for Duration {
     fn schema_name() -> String {

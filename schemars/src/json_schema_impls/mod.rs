@@ -42,6 +42,8 @@ mod arrayvec;
 mod atomic;
 #[cfg(feature = "bytes")]
 mod bytes;
+#[cfg(feature = "time03")]
+mod time03;
 #[cfg(feature = "chrono")]
 mod chrono;
 mod core;

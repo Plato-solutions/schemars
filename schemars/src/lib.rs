@@ -261,6 +261,7 @@ println!("{}", serde_json::to_string_pretty(&schema).unwrap());
 
 ## Optional Dependencies
 Schemars can implement `JsonSchema` on types from several popular crates, enabled via optional dependencies (dependency versions are shown in brackets):
+- [`time`](https://crates.io/crates/time) (^0.3.2)
 - [`chrono`](https://crates.io/crates/chrono) (^0.4)
 - [`indexmap`](https://crates.io/crates/indexmap) (^1.2)
 - [`either`](https://crates.io/crates/either) (^1.3)
