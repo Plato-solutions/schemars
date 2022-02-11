@@ -2,6 +2,7 @@ use crate::gen::SchemaGenerator;
 use crate::schema::Schema;
 use crate::JsonSchema;
 
+
 macro_rules! wrapper_impl {
     ($($desc:tt)+) => {
         forward_impl!(($($desc)+ where T: JsonSchema) => T);
@@ -22,3 +23,6 @@ wrapper_impl!(<T: ?Sized> JsonSchema for std::cell::RefCell<T>);
 wrapper_impl!(<'a, T: ?Sized + ToOwned> JsonSchema for std::borrow::Cow<'a, T>);
 wrapper_impl!(<T> JsonSchema for std::num::Wrapping<T>);
 wrapper_impl!(<T> JsonSchema for std::cmp::Reverse<T>);
+
+#[cfg(feature="rocket")]
+wrapper_impl!(<T> JsonSchema for rocket::serde::json::Json<T>);

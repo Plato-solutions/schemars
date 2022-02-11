@@ -1,4 +1,3 @@
-use std::time;
 use crate::gen::SchemaGenerator;
 use crate::schema::*;
 use crate::JsonSchema;
