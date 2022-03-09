@@ -62,36 +62,7 @@ impl Schema {
         match self {
             Schema::Object(o) => o,
             Schema::Bool(true) => SchemaObject {
-                subschemas: Some(Box::new(SubschemaValidation {
-                    any_of: Some(Vec::from([
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::Null.into()),
-                                ..Default::default()
-                            }),
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::Object.into()),
-                                ..Default::default()
-                            }),
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::Array.into()),
-                                ..Default::default()
-                            }),
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::Number.into()),
-                                ..Default::default()
-                            }),
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::String.into()),
-                                ..Default::default()
-                            }),
-                            Schema::Object( SchemaObject {
-                                instance_type: Some(InstanceType::Integer.into()),
-                                ..Default::default()
-                            })
-                        ])
-                    ),
-                    ..Default::default()
-                })),
+                instance_type: Some(InstanceType::OpenApiAny.into()),
                 ..Default::default()
             },
             Schema::Bool(false) => SchemaObject {
@@ -532,6 +503,8 @@ pub enum InstanceType {
     Number,
     String,
     Integer,
+    #[serde(rename = "any")]
+    OpenApiAny,
 }
 
 /// A type which can be serialized as a single item, or multiple items.
