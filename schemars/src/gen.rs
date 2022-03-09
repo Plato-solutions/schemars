@@ -94,7 +94,7 @@ impl SchemaSettings {
             visitors: vec![
                 Box::new(RemoveRefSiblings),
                 Box::new(ReplaceBoolSchemas {
-                    skip_additional_properties: true,
+                    skip_additional_properties: false,
                 }),
                 Box::new(SetSingleExample {
                     retain_examples: false,
