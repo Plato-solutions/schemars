@@ -12,11 +12,7 @@ impl JsonSchema for Value {
     }
 
     fn json_schema(_: &mut SchemaGenerator) -> Schema {
-        SchemaObject {
-            instance_type: Some(InstanceType::Any.into()),
-            ..Default::default()
-        }
-            .into()
+        Schema::Bool(true)
     }
 }
 
