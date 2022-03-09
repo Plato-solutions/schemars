@@ -532,7 +532,6 @@ pub enum InstanceType {
     Number,
     String,
     Integer,
-    Any,
 }
 
 /// A type which can be serialized as a single item, or multiple items.
