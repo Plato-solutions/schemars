@@ -61,7 +61,39 @@ impl Schema {
     pub fn into_object(self) -> SchemaObject {
         match self {
             Schema::Object(o) => o,
-            Schema::Bool(true) => SchemaObject::default(),
+            Schema::Bool(true) => SchemaObject {
+                subschemas: Some(Box::new(SubschemaValidation {
+                    any_of: Some(Vec::from([
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::Null.into()),
+                                ..Default::default()
+                            }),
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::Object.into()),
+                                ..Default::default()
+                            }),
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::Array.into()),
+                                ..Default::default()
+                            }),
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::Number.into()),
+                                ..Default::default()
+                            }),
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::String.into()),
+                                ..Default::default()
+                            }),
+                            Schema::Object( SchemaObject {
+                                instance_type: Some(InstanceType::Integer.into()),
+                                ..Default::default()
+                            })
+                        ])
+                    ),
+                    ..Default::default()
+                })),
+                ..Default::default()
+            },
             Schema::Bool(false) => SchemaObject {
                 subschemas: Some(Box::new(SubschemaValidation {
                     not: Some(Schema::Object(Default::default()).into()),
